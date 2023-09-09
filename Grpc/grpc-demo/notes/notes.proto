@@ -1,0 +1,23 @@
+syntax = "proto3";
+package notes;
+
+option go_package = "github.com/xNok/go-grpc-demo;notes";
+
+service Notes {
+    rpc Save (Note) returns (NoteSaveReply) {}
+    rpc Load (NoteSearch) returns (Note) {}
+}
+
+message Note {
+    string title = 1;
+    bytes body = 2;
+}
+
+message NoteSaveReply {
+    bool saved =1;
+
+}
+
+message NoteSearch {
+    string keyword = 1;
+}
